@@ -1,0 +1,12 @@
+{
+  "name": "Synectic",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "proxies": [
+  	{
+  		"path": "/DEV",
+  		"proxyUrl": "https://d4w69355hi.execute-api.us-east-1.amazonaws.com/DEV"
+  	}
+  ]
+}

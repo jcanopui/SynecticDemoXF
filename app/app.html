@@ -1,0 +1,26 @@
+<ion-menu [content]="content">
+
+  <ion-toolbar primary>
+    <ion-title>Menu</ion-title>
+    <ion-searchbar 
+                  [(ngModel)]="query"
+  [showCancelButton]="shouldShowCancel">
+</ion-searchbar>
+  </ion-toolbar>
+
+  <ion-content>
+
+    <ion-list>
+      <button ion-item *ngFor="let p of pages | search:query" menuClose (click)="openPage(p)">
+        {{p}}
+      </button>
+
+      <button ion-item menuClose detail-none>
+        Close Menu
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>
