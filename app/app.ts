@@ -31,4 +31,10 @@ class DemoApp {
 
 }
 
-ionicBootstrap(DemoApp);
+ionicBootstrap(DemoApp, null, {
+platforms: {
+      ios: {
+        statusbarPadding: true
+      }
+    }
+});
