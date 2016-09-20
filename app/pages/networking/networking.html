@@ -11,7 +11,22 @@
   <button block (click)="makeNetworkCall()">
     Make Network Call
   </button>
+      <ion-row>
+        <ion-col>typeId</ion-col>
+        <ion-col>language</ion-col>
+        <ion-col>name</ion-col>
+        <ion-col>key</ion-col>
+        <ion-col>value</ion-col>
+      </ion-row>
   <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
-  	<ion-item *ngFor="let post of posts">{{ post.value }}</ion-item>
+    <ion-item *ngFor="let post of posts">
+      <ion-row>
+        <ion-col><div>{{ post.typeId }}</div></ion-col>
+        <ion-col><div>{{ post.language }}</div></ion-col>
+        <ion-col><div>{{ post.name }}</div></ion-col>
+        <ion-col><div>{{ post.key }}</div></ion-col>
+        <ion-col><div>{{ post.value }}</div></ion-col>
+      </ion-row>
+    </ion-item>
   </ion-list>
 </ion-content>
