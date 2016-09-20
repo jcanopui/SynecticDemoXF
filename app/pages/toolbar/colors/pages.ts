@@ -5,6 +5,9 @@ import {NavController} from 'ionic-angular';
   template: `
     <ion-header>
       <ion-navbar light>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
         <ion-title>Toolbar: Light</ion-title>
       </ion-navbar>
     </ion-header>
@@ -29,6 +32,9 @@ export class Page4 {
   template: `
     <ion-header>
       <ion-navbar danger>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
         <ion-title>Toolbar: Danger</ion-title>
       </ion-navbar>
     </ion-header>
@@ -53,6 +59,9 @@ export class Page3 {
   template: `
     <ion-header>
       <ion-navbar secondary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
         <ion-title>Toolbar: Secondary</ion-title>
       </ion-navbar>
     </ion-header>
@@ -78,6 +87,9 @@ export class Page2 {
   template: `
     <ion-header>
       <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
         <ion-title>Toolbar: Primary</ion-title>
       </ion-navbar>
     </ion-header>

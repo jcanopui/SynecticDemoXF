@@ -1,6 +1,9 @@
 
 <ion-header>
   <ion-navbar [attr.royal]="isAndroid ? ' ' : null">
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-buttons start>
       <button royal showWhen="ios,windows"><ion-icon name="search"></ion-icon></button>
       <button light hideWhen="ios,windows"><ion-icon name="search"></ion-icon></button>
@@ -19,6 +22,9 @@
 
 <ion-footer>
   <ion-toolbar [attr.royal]="isAndroid ? ' ' : null" class="toolbar-buttons-page">
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title class="footer-title">Ash, Misty, Brock</ion-title>
     <ion-buttons end>
       <button royal large showWhen="ios,windows">

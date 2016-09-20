@@ -6,6 +6,9 @@ import {ViewController, Platform} from 'ionic-angular';
   template: `
     <ion-header>
       <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
         <ion-title>Tabs</ion-title>
       </ion-navbar>
     </ion-header>
