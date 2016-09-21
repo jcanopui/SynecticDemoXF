@@ -36,7 +36,12 @@ class DemoApp {
 
   openPage(page) {
 
-    this.content.setRoot(helpers.getPageFor(page), {}, { animate: false });
+    if (page == 'Crash report test') {
+      hockeyapp.forceCrash(null,null);
+    }
+    else {
+      this.content.setRoot(helpers.getPageFor(page), {}, { animate: false });
+    }
   }
 }
 

@@ -138,7 +138,9 @@ export function getPages() {
     'toolbar-segment': toolbar.SegmentPage,
     'toolbar-searchbar': toolbar.SearchbarPage,
     'toolbar-colors': toolbar.ColorsPage,
-    'networking': networking.BasicPage
+    'Everis service': networking.BasicPage,
+    'Synectic service': networking.BasicPage,
+    'Crash report test': null
   };
 }
 
