@@ -35,7 +35,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-hockeyapp@2.2.2"
+    "cordova-plugin-hockeyapp@2.2.2",
+    "cordova-plugin-app-version"
   ],
   "cordovaPlatforms": [
     "ios@4.1.1",

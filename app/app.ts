@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, NavController, Menu, Platform} from 'ionic-angular';
 import * as helpers from './directives/helpers';
+import {AppVersion} from 'ionic-native';
 
 // Change the import if you want to change the first page, for example:
 // import { ImagePage as ActionPage } from './pages/cards/cards';
@@ -14,6 +15,7 @@ import { search } from './pipes/search'
 })
 class DemoApp {
   rootPage: any;
+  versionNumber = 'unknown';
 
   @ViewChild('content') content: NavController;
 
@@ -39,7 +41,22 @@ class DemoApp {
           hockeyapp.start(null, null, appId);
         }
     })
-    
+
+    if(platform.is('cordova')) {
+
+      var versioncode;
+      var versionnumber;
+
+      AppVersion.getVersionNumber().then((s) => {
+        versionnumber = s;
+
+        AppVersion.getVersionCode().then((s) => {
+          versioncode = s;
+
+          this.versionNumber = versionnumber + ' ' + versioncode;
+        });
+      });
+    }
   }
 
   openPage(page) {
