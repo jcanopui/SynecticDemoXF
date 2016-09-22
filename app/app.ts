@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, NavController, Menu, Platform} from 'ionic-angular';
 import * as helpers from './directives/helpers';
-/*import * as Hockeyapp from './hockeyapp';'*/
 
 // Change the import if you want to change the first page, for example:
 // import { ImagePage as ActionPage } from './pages/cards/cards';
@@ -20,16 +19,25 @@ class DemoApp {
 
   pages = Object.keys(helpers.getPages());
 
-  constructor(platform: Platform/*, hockeyapp: hockeyapp*/) {
+  constructor(platform: Platform) {
     this.rootPage = ActionPage;
     
     platform.ready().then(() => {
 
-        /*Hockeyapp.*/hockeyapp.start(() => {
-          //alert('succes')
-        }, () => {
-          alert('Can\'t register to Hockeyapp')
-        }, "4704d6dc8f5f49f7861dea3f83d83ff0");
+        var androidAppId = "4704d6dc8f5f49f7861dea3f83d83ff0";
+        var iosAppId = "a3ded9df83b54995b33e91b5986903cb";
+        var appId = "";
+
+        if (platform.is('ios')) {
+          appId = iosAppId;
+        }
+        else if (platform.is('android')) {
+          appId = androidAppId;
+        }
+
+        if (appId != "") {
+          hockeyapp.start(null, null, appId);
+        }
     })
     
   }
