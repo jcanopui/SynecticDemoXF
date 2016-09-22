@@ -35,15 +35,11 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-hockeyapp"
+    "cordova-plugin-hockeyapp@2.2.2"
   ],
   "cordovaPlatforms": [
-    "ios",
-    {
-      "platform": "ios",
-      "version": "",
-      "locator": "ios"
-    }
+    "ios@4.1.1",
+    "android@5.2.2"
   ],
   "name": "synectic",
   "description": "Synectic: An Ionic project"
