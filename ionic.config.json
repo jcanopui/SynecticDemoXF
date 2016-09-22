@@ -7,6 +7,10 @@
   	{
   		"path": "/DEV",
   		"proxyUrl": "https://d4w69355hi.execute-api.us-east-1.amazonaws.com/DEV"
-  	}
+  	},
+    {
+      "path": "/services",
+      "proxyUrl": "https://mobilityi.agbar.net/mobility-server/services"
+    }
   ]
 }

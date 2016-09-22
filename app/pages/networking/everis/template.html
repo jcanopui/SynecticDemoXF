@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Everis Service Test</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <button block (click)="makeNetworkCall()">
+    Make Network Call
+  </button>
+  <div [hidden]="!apiResponseVisible">
+  <ion-row>
+        <ion-col center>OrderBy:</ion-col>
+        <ion-col>
+          <button block (click)="openMenuColumnNames()">
+            {{columnNameButtonText}}
+          </button>
+        </ion-col>
+        <ion-col>
+          <button block (click)="openMenuAscDsc()">
+            {{ascDescButtonText}}
+          </button>
+        </ion-col>
+  </ion-row>
+
+
+    <ion-item>
+      <ion-row>
+        <ion-col>typeId</ion-col>
+        <ion-col>language</ion-col>
+        <ion-col>name</ion-col>
+        <ion-col>key</ion-col>
+        <ion-col>value</ion-col>
+      </ion-row>
+      </ion-item>
+  <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+    <ion-item *ngFor="let item of items">
+      <ion-row>
+        <ion-col><div>{{ item.typeId }}</div></ion-col>
+        <ion-col><div>{{ item.language }}</div></ion-col>
+        <ion-col><div>{{ item.name }}</div></ion-col>
+        <ion-col><div>{{ item.key }}</div></ion-col>
+        <ion-col><div>{{ item.value }}</div></ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  </div>
+</ion-content>

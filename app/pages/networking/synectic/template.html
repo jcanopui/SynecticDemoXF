@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Synectic Service Test</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  
+  
+  <ion-row>
+    <ion-col center>Filter by APPID:</ion-col>
+    <ion-col>
+      <ion-input placeholder="APPID" [(ngModel)]="filter"></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <button block (click)="makeNetworkCall()">
+    Make Network Call
+  </button>
+
+<div [hidden]="!apiResponseVisible">
+    <ion-item>
+      <ion-row>
+        <ion-col>typeId</ion-col>
+        <ion-col>language</ion-col>
+        <ion-col>name</ion-col>
+        <ion-col>key</ion-col>
+        <ion-col>value</ion-col>
+      </ion-row>
+      </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-row>
+        <ion-col><div>{{ item.typeId }}</div></ion-col>
+        <ion-col><div>{{ item.language }}</div></ion-col>
+        <ion-col><div>{{ item.name }}</div></ion-col>
+        <ion-col><div>{{ item.key }}</div></ion-col>
+        <ion-col><div>{{ item.value }}</div></ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  </div>
+</ion-content>
