@@ -29,6 +29,7 @@ import * as toast from '../pages/toast/toast';
 import * as toggles from '../pages/toggles/toggles';
 import * as toolbar from '../pages/toolbar/toolbar';
 import * as networking from '../pages/networking/networking';
+import * as maps from '../pages/maps/maps';
 
 
 export function hasScrollbar() {
@@ -138,6 +139,7 @@ export function getPages() {
     'toolbar-segment': toolbar.SegmentPage,
     'toolbar-searchbar': toolbar.SearchbarPage,
     'toolbar-colors': toolbar.ColorsPage,
+    'maps': maps.MapsPage,
     'Everis service': networking.EverisPage,
     'Synectic service': networking.SynecticPage,
     'Crash report test': null

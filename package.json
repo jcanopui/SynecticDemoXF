@@ -36,7 +36,8 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
     "cordova-plugin-hockeyapp@2.2.2",
-    "cordova-plugin-app-version"
+    "cordova-plugin-app-version",
+    "cordova-plugin-geolocation"
   ],
   "cordovaPlatforms": [
     "ios@4.1.1",
