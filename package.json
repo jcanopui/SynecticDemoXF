@@ -37,7 +37,14 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-hockeyapp@2.2.2",
     "cordova-plugin-app-version",
-    "cordova-plugin-geolocation"
+    "cordova-plugin-geolocation",
+    {
+      "variables": {
+        "SENDER_ID": "669988095592"
+      },
+      "locator": "phonegap-plugin-push",
+      "id": "phonegap-plugin-push"
+    }
   ],
   "cordovaPlatforms": [
     "ios@4.1.1",

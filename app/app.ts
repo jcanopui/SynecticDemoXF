@@ -1,12 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
-import {ionicBootstrap, NavController, Menu, Platform} from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { ionicBootstrap, NavController, Menu, Platform } from 'ionic-angular';
 import * as helpers from './directives/helpers';
-import {AppVersion} from 'ionic-native';
-
-// Change the import if you want to change the first page, for example:
-// import { ImagePage as ActionPage } from './pages/cards/cards';
-import { BasicPage as ActionPage} from './pages/action-sheets/action-sheets';
-
+import { AppVersion, Push } from 'ionic-native';
+import { BasicPage as ActionPage } from './pages/action-sheets/action-sheets';
 import { search } from './pipes/search'
 
 @Component({
@@ -14,6 +10,7 @@ import { search } from './pipes/search'
   pipes: [search]
 })
 class DemoApp {
+
   rootPage: any;
   versionNumber = 'unknown';
 
@@ -21,28 +18,99 @@ class DemoApp {
 
   pages = Object.keys(helpers.getPages());
 
-  constructor(platform: Platform) {
+  constructor(public platform: Platform) {
+
     this.rootPage = ActionPage;
     
     platform.ready().then(() => {
 
-        var androidAppId = "4704d6dc8f5f49f7861dea3f83d83ff0";
-        var iosAppId = "a3ded9df83b54995b33e91b5986903cb";
-        var appId = "";
-
-        if (platform.is('ios')) {
-          appId = iosAppId;
-        }
-        else if (platform.is('android')) {
-          appId = androidAppId;
-        }
-
-        if (appId != "") {
-          hockeyapp.start(null, null, appId);
-        }
+      this.setUpHockeyApp();
+      this.setUpPushNotifications();
     })
 
-    if(platform.is('cordova')) {
+    this.loadAppVersionString();
+  }
+
+  setUpHockeyApp() {
+
+    //Run when platform ready / view loaded
+
+    var androidAppId = "4704d6dc8f5f49f7861dea3f83d83ff0";
+    var iosAppId = "a3ded9df83b54995b33e91b5986903cb";
+    var appId = "";
+
+    if (this.platform.is('ios')) {
+      appId = iosAppId;
+    }
+    else if (this.platform.is('android')) {
+      appId = androidAppId;
+    }
+
+    if (appId != "") {
+      hockeyapp.start(null, null, appId);
+    }
+  }
+
+  setUpPushNotifications() {
+
+    let push = Push.init({
+        android: {
+            senderID: "669988095592"
+        },
+        ios: {
+            alert: "true",
+            badge: false,
+            sound: "true"
+        },
+        windows: {}
+    });
+
+    push.on('registration', (data) => {
+        console.log("device token ->", data.registrationId);
+        //TODO - send device token to server
+    });
+
+    push.on('notification', (data) => {
+        console.log('message', data.message);
+        let self = this;
+        //if user using app and push notification comes
+        if (data.additionalData.foreground) {
+            // if application open, show popup
+
+            alert(data.message);
+            /*
+            let confirmAlert = Alert.create({
+                title: 'New Notification',
+                message: data.message,
+                buttons: [{
+                    text: 'Ignore',
+                    role: 'cancel'
+                }, {
+                    text: 'View',
+                    handler: () => {
+                        //TODO: Your logic here
+                        //self.nav.push(SomeComponent, {message:data.message});
+                    }
+                }]
+            });
+            self.nav.present(confirmAlert);
+            */
+        } else {
+            //if user NOT using app and push notification comes
+            //TODO: Your logic on click of push notification directly
+            //self.nav.push(SomeComponent, {message:data.message});
+            console.log("Push notification clicked");
+        }
+    });
+
+    push.on('error', (e) => {
+        console.log(e.message);
+    });
+  }
+
+  loadAppVersionString() {
+
+    if(this.platform.is('cordova')) {
 
       var versioncode;
       var versionnumber;
