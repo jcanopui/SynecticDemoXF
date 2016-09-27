@@ -5,6 +5,8 @@ import { AppVersion, Push } from 'ionic-native';
 import { BasicPage as ActionPage } from './pages/action-sheets/action-sheets';
 import { search } from './pipes/search'
 
+declare var ENVIRONMENT;
+
 @Component({
   templateUrl: './build/app.html',
   pipes: [search]
@@ -13,6 +15,7 @@ class DemoApp {
 
   rootPage: any;
   versionNumber = 'unknown';
+  environment = ENVIRONMENT + ' environment';
 
   @ViewChild('content') content: NavController;
 
