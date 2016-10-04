@@ -24,7 +24,8 @@ var srcfile = path.join(rootdir, "config", "config-" + config_target + ".js");
 // Define the destination paths for the config.js file for each platform
 var configFilesToReplace = {
     "android" : "platforms/android/assets/www/config.js",
-    "ios" : "platforms/ios/www/config.js"
+    "ios" : "platforms/ios/www/config.js",
+    "windows" : "platforms/windows/www/config.js"
 }; 
     
 var platforms = process.env.CORDOVA_PLATFORMS.split(',');
