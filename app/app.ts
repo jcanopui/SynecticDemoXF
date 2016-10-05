@@ -69,12 +69,14 @@ class DemoApp {
     });
 
     push.on('registration', (data) => {
-        console.log("device token ->", data.registrationId);
+      let token = "[Synectic] device token -> " + data.registrationId;
+
+        console.log(token);
         //TODO - send device token to server
     });
 
     push.on('notification', (data) => {
-        console.log('message', data.message);
+        console.log('[Synectic] message', data.message);
         let self = this;
         //if user using app and push notification comes
         if (data.additionalData.foreground) {
@@ -102,7 +104,7 @@ class DemoApp {
             //if user NOT using app and push notification comes
             //TODO: Your logic on click of push notification directly
             //self.nav.push(SomeComponent, {message:data.message});
-            console.log("Push notification clicked");
+            console.log("[Synectic] Push notification clicked");
         }
     });
 
