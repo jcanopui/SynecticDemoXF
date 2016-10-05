@@ -4,6 +4,7 @@ import * as helpers from './directives/helpers';
 import { AppVersion, Push } from 'ionic-native';
 import { BasicPage as ActionPage } from './pages/action-sheets/action-sheets';
 import { search } from './pipes/search'
+import { Http } from '@angular/http';
 
 declare var ENVIRONMENT;
 
@@ -21,7 +22,8 @@ class DemoApp {
 
   pages = Object.keys(helpers.getPages());
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform,
+              private http: Http) {
 
     this.rootPage = ActionPage;
     
@@ -71,8 +73,8 @@ class DemoApp {
     push.on('registration', (data) => {
       let token = "[Synectic] device token -> " + data.registrationId;
 
-        console.log(token);
-        //TODO - send device token to server
+      console.log(token);
+      this.registerTokenToAws(data.registrationId);
     });
 
     push.on('notification', (data) => {
@@ -111,6 +113,41 @@ class DemoApp {
     push.on('error', (e) => {
         console.log(e.message);
     });
+  }
+
+  post(url, data) {
+    return this.http.post(url, data);
+  }
+
+  registerTokenToAws(token) {
+
+    var platform = "";
+
+    if (this.platform.is('ios')) {
+      platform = "iosProd";
+    }
+    else if (this.platform.is('android')) {
+      platform = "android";
+    }
+
+    if (platform != "") {
+      let url = '/DEV/registerpush';
+
+       let body = {
+        "platform": platform,
+        "token": token,
+        "identifier": ""
+      };
+
+      console.log("[Synectic] Going to register to url: " + url);
+      console.log("[Synectic] With body: " + body.platform);
+      this.post(url,body).map(res => res.json()).subscribe(data => {
+        console.log("[Synectic] Token registered to AWS: " + data);
+      }, error => {
+        console.log("[Synectic] error:" + error);
+        alert(error)
+      });
+    }
   }
 
   loadAppVersionString() {
