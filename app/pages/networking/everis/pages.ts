@@ -34,7 +34,7 @@ export class EverisPage {
 
     let url = '';
 
-    if(this.platform.is('ios')) {
+    if(this.platform.is('mobile')) {
       url = 'https://d4w69355hi.execute-api.us-east-1.amazonaws.com/DEV/keyvalue';
     }
     else {
