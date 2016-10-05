@@ -7,6 +7,7 @@ import { search } from './pipes/search'
 import { Http } from '@angular/http';
 
 declare var ENVIRONMENT;
+declare var BUILD_TYPE;
 
 @Component({
   templateUrl: './build/app.html',
@@ -124,7 +125,7 @@ class DemoApp {
     var platform = "";
 
     if (this.platform.is('ios')) {
-      platform = "iosProd";
+      platform = BUILD_TYPE == "Distribution" ? "iosProd" : "iosDev";
     }
     else if (this.platform.is('android')) {
       platform = "android";

@@ -31,6 +31,10 @@ if (!fs.existsSync(srcfile)) {
     fs.writeFileSync(dstfile, srcContent, 'utf8');
 }
 
+//Development | Distribution
+var config_build = process.env.config_build || "Distribution";
+fs.appendFileSync(dstfile, '\nBUILD_TYPE="'+ config_build +'"', 'utf8');
+
 var srcfile = path.join(rootdir, "config", "app.variables." + config_target + ".scss");
 var dstfile = path.join(rootdir, "app/theme", "app.variables.scss"); 
     
