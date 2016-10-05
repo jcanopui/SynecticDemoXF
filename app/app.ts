@@ -131,7 +131,15 @@ class DemoApp {
     }
 
     if (platform != "") {
-      let url = '/DEV/registerpush';
+
+      let url = '';
+
+      if(this.platform.is('ios')) {
+        url = 'https://d4w69355hi.execute-api.us-east-1.amazonaws.com/DEV/registerpush';
+      }
+      else {
+        url = '/DEV/registerpush';
+      }
 
        let body = {
         "platform": platform,

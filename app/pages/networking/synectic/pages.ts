@@ -53,7 +53,7 @@ export class SynecticPage {
 
     let url = '';
 
-    if(this.platform.is('mobile')) {
+    if(this.platform.is('ios')) {
       url = 'https://mobilityi.agbar.net/mobility-server/services/keyvalueService';
     }
     else {
