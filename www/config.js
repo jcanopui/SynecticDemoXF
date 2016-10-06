@@ -1,5 +1,5 @@
 // THIS IS A GENERATED FILE, DO NOT EDIT, TO CHANGE SOME VALUES PLEASE REFER TO FOLDER:
-// /Users/obardale/Documents/PROJECTS/Synectic/Synectic/config
+// $(PROJECT_ROOT_DIR)/config
 
 ENVIRONMENT="Default"
 BUILD_TYPE="Distribution"
