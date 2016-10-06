@@ -28,7 +28,9 @@ if (!fs.existsSync(srcfile)) {
      console.log("copying " + srcfile + " to " + dstfile);
  
     var srcContent = fs.readFileSync(srcfile, 'utf8');
-    fs.writeFileSync(dstfile, srcContent, 'utf8');
+    var basedir = path.join(rootdir, "config");
+    var disclaimer = "// THIS IS A GENERATED FILE, DO NOT EDIT, TO CHANGE SOME VALUES PLEASE REFER TO FOLDER:\n// "+basedir+"\n\n";
+    fs.writeFileSync(dstfile, disclaimer + srcContent, 'utf8');
 }
 
 //Development | Distribution
@@ -44,7 +46,9 @@ if (!fs.existsSync(srcfile)) {
      console.log("copying " + srcfile + " to " + dstfile);
  
     var srcContent = fs.readFileSync(srcfile, 'utf8');
-    fs.writeFileSync(dstfile, srcContent, 'utf8');
+    var basedir = path.join(rootdir, "config");
+    var disclaimer = "// THIS IS A GENERATED FILE, DO NOT EDIT, TO CHANGE SOME VALUES PLEASE REFER TO FOLDER:\n// "+basedir+"\n\n";
+    fs.writeFileSync(dstfile, disclaimer + srcContent, 'utf8');
 }
 
 console.log("////////////////////////////////////");

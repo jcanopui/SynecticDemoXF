@@ -1,2 +1,5 @@
+// THIS IS A GENERATED FILE, DO NOT EDIT, TO CHANGE SOME VALUES PLEASE REFER TO FOLDER:
+// /Users/obardale/Documents/PROJECTS/Synectic/Synectic/config
+
 ENVIRONMENT="Default"
-BUILD_TYPE="Development"
+BUILD_TYPE="Distribution"
