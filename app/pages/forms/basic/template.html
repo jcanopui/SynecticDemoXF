@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Form</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="forms-basic-page">
+
+  <ion-list>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" novalidate>
+
+        <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input type="text" formControlName="name" name="name"></ion-input>
+        </ion-item>
+        <p [hidden]="myForm.controls.name.valid || !myForm.controls.name.touched" danger padding-left>Please enter your name correctly.</p>
+
+        <ion-item>
+          <ion-label >Birth date</ion-label>
+          <ion-datetime #dateTimePicker displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" formControlName="birthDate" name="birthDate"></ion-datetime>
+        </ion-item>
+        <p [hidden]="myForm.controls.birthDate.valid || !myForm.controls.birthDate.touched" danger padding-left>Please enter a valid date.</p>
+
+        <ion-item>
+          <ion-label >Hour</ion-label>
+          <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH mm ss" formControlName="hour" name="hour"></ion-datetime>
+        </ion-item>
+        <p [hidden]="myForm.controls.hour.valid || !myForm.controls.hour.touched" danger padding-left>Please enter a valid hour.</p>
+
+        <ion-item>
+            <ion-label >Email</ion-label>
+            <ion-input type="email" formControlName="email" name="email"></ion-input>
+        </ion-item>
+        <p [hidden]="myForm.controls.email.valid || !myForm.controls.email.touched" danger padding-left>Please enter a valid email.</p>
+
+        <ion-item>
+          <ion-label>Country (Europe Only)</ion-label>
+          <ion-select multiple="false" formControlName="country">
+            <ion-option *ngFor="let country of countries">{{country}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <p [hidden]="myForm.controls.country.valid || !myForm.controls.country.touched" danger padding-left>Please enter a valid country.</p>
+
+        <ion-item>
+            <ion-label >Amount</ion-label>
+            <ion-input type="number" formControlName="amount" name="amount"></ion-input>
+        </ion-item>
+        <p [hidden]="myForm.controls.amount.valid || !myForm.controls.amount.touched" danger padding-left>Please enter a correct amount.</p>
+
+        <ion-item>
+          <ion-label>Colors</ion-label>
+          <ion-select multiple="true" formControlName="favouriteColors">
+            <ion-option *ngFor="let color of colors">{{color}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <p [hidden]="myForm.controls.favouriteColors.valid || !myForm.controls.favouriteColors.touched" danger padding-left>Please enter a valid colors.</p>
+
+        <ion-item>
+        <ion-label >Observations</ion-label>
+          <ion-textarea rows="6" formControlName="observations"></ion-textarea>
+        </ion-item>
+        <p [hidden]="myForm.controls.observations.valid || !myForm.controls.observations.touched" danger padding-left>Please enter a valid observation.</p>
+
+        <button block [disabled]="!myForm.valid">
+            <ion-icon name="send"></ion-icon>Submit</button>
+    </form>
+    </ion-list>
+
+</ion-content>

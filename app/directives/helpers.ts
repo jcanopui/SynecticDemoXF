@@ -30,6 +30,7 @@ import * as toggles from '../pages/toggles/toggles';
 import * as toolbar from '../pages/toolbar/toolbar';
 import * as networking from '../pages/networking/networking';
 import * as maps from '../pages/maps/maps';
+import * as forms from '../pages/forms/forms'
 
 
 export function hasScrollbar() {
@@ -142,6 +143,7 @@ export function getPages() {
     'maps': maps.MapsPage,
     'Everis service': networking.EverisPage,
     'Synectic service': networking.SynecticPage,
+    'Form': forms.BasicPage,
     'Crash report test': null
   };
 }
