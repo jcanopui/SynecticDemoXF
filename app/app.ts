@@ -41,8 +41,8 @@ class DemoApp {
 
     //Run when platform ready / view loaded
 
-    var androidAppId = "4704d6dc8f5f49f7861dea3f83d83ff0";
-    var iosAppId = "a3ded9df83b54995b33e91b5986903cb";
+    var androidAppId = "80af16316b7947c689d9e6e1baaecad7";
+    var iosAppId = "";
     var appId = "";
 
     if (this.platform.is('ios')) {
@@ -61,7 +61,7 @@ class DemoApp {
 
     let push = Push.init({
         android: {
-            senderID: "669988095592"
+            senderID: "1065449596508"
         },
         ios: {
             alert: "true",
@@ -136,10 +136,10 @@ class DemoApp {
       let url = '';
 
       if(this.platform.is('mobile')) {
-        url = 'https://d4w69355hi.execute-api.us-east-1.amazonaws.com/DEV/registerpush';
+        url = 'https://afk7z1jag6.execute-api.us-east-1.amazonaws.com/dev/push/registration';
       }
       else {
-        url = '/DEV/registerpush';
+        url = '/dev/push/registration';
       }
 
        let body = {

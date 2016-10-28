@@ -40,7 +40,7 @@
     "cordova-plugin-geolocation",
     {
       "variables": {
-        "SENDER_ID": "669988095592"
+        "SENDER_ID": "1065449596508"
       },
       "locator": "phonegap-plugin-push",
       "id": "phonegap-plugin-push"
