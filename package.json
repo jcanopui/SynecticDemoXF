@@ -43,7 +43,8 @@
         "SENDER_ID": "669988095592"
       },
       "locator": "phonegap-plugin-push",
-      "id": "phonegap-plugin-push"
+      "id": "phonegap-plugin-push",
+      "version": "1.8.2"
     }
   ],
   "cordovaPlatforms": [
