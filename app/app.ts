@@ -43,6 +43,8 @@ class DemoApp {
 
     var androidAppId = "4704d6dc8f5f49f7861dea3f83d83ff0";
     var iosAppId = "a3ded9df83b54995b33e91b5986903cb";
+    var windowsPhoneAppId = "df9f8027e5ed4bd39f8c4e0f85b3fe5e";
+    var windowsAppId = "c2c5d7b3550844ea9c9bc9166f924348";
     var appId = "";
 
     if (this.platform.is('ios')) {
@@ -50,6 +52,12 @@ class DemoApp {
     }
     else if (this.platform.is('android')) {
       appId = androidAppId;
+    }
+    else if (this.platform.is('windows') && this.platform.is('mobile')) {
+      appId = windowsPhoneAppId;
+    }
+    else if (this.platform.is('windows')) {
+      appId = windowsAppId;
     }
 
     if (appId != "") {
@@ -72,47 +80,30 @@ class DemoApp {
     });
 
     push.on('registration', (data) => {
-      let token = "[Synectic] device token -> " + data.registrationId;
 
+      let token = "[Synectic] device token -> " + data.registrationId;
       console.log(token);
+
       this.registerTokenToAws(data.registrationId);
     });
 
     push.on('notification', (data) => {
+
         console.log('[Synectic] message', data.message);
+
         let self = this;
-        //if user using app and push notification comes
+        
         if (data.additionalData.foreground) {
-            // if application open, show popup
 
             alert(data.message);
-            /*
-            let confirmAlert = Alert.create({
-                title: 'New Notification',
-                message: data.message,
-                buttons: [{
-                    text: 'Ignore',
-                    role: 'cancel'
-                }, {
-                    text: 'View',
-                    handler: () => {
-                        //TODO: Your logic here
-                        //self.nav.push(SomeComponent, {message:data.message});
-                    }
-                }]
-            });
-            self.nav.present(confirmAlert);
-            */
         } else {
-            //if user NOT using app and push notification comes
-            //TODO: Your logic on click of push notification directly
-            //self.nav.push(SomeComponent, {message:data.message});
+
             console.log("[Synectic] Push notification clicked");
         }
     });
 
     push.on('error', (e) => {
-        console.log(e.message);
+        console.log("[Synectic] " + e.message);
     });
   }
 
@@ -129,6 +120,9 @@ class DemoApp {
     }
     else if (this.platform.is('android')) {
       platform = "android";
+    }
+    else if (this.platform.is('windows')) {
+      platform = "windows"
     }
 
     if (platform != "") {
@@ -150,9 +144,12 @@ class DemoApp {
 
       console.log("[Synectic] Going to register to url: " + url);
       console.log("[Synectic] With body: " + body.platform);
+
       this.post(url,body).map(res => res.json()).subscribe(data => {
+
         console.log("[Synectic] Token registered to AWS: " + data);
       }, error => {
+
         console.log("[Synectic] error:" + error);
         alert(error)
       });
